@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clock", "Clock\Clock.csproj", "{17308511-440E-4CCB-8653-BACC88BF3E06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColckLibrary", "ColckLibrary\ColckLibrary.csproj", "{4397AE4C-EBAA-4A31-A67A-696D79C6F231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkLibrary", "NetworkLibrary\NetworkLibrary.csproj", "{3980119E-12D0-4D75-81F4-868CAC336402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSerializer", "XmlSerializer\XmlSerializer.csproj", "{6289A3A8-B70E-4C76-A9BF-6478E5521954}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17308511-440E-4CCB-8653-BACC88BF3E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17308511-440E-4CCB-8653-BACC88BF3E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17308511-440E-4CCB-8653-BACC88BF3E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17308511-440E-4CCB-8653-BACC88BF3E06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4397AE4C-EBAA-4A31-A67A-696D79C6F231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4397AE4C-EBAA-4A31-A67A-696D79C6F231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4397AE4C-EBAA-4A31-A67A-696D79C6F231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4397AE4C-EBAA-4A31-A67A-696D79C6F231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3980119E-12D0-4D75-81F4-868CAC336402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3980119E-12D0-4D75-81F4-868CAC336402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3980119E-12D0-4D75-81F4-868CAC336402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3980119E-12D0-4D75-81F4-868CAC336402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6289A3A8-B70E-4C76-A9BF-6478E5521954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6289A3A8-B70E-4C76-A9BF-6478E5521954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6289A3A8-B70E-4C76-A9BF-6478E5521954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6289A3A8-B70E-4C76-A9BF-6478E5521954}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
