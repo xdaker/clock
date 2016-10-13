@@ -39,7 +39,6 @@ namespace ColckWindow
             AddMenuEvent();
             _thisViewPosition = ViewPosition.InitialValue;
         }
-        int i = 0;
         private void MillisecondChangeEventHandler(object sender, TimeUpdateEventArgs e)
         {
             StateIntegrate(View.rectangleState);

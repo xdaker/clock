@@ -16,6 +16,7 @@ namespace ColckWindow
         public double WindowWidth { get; set; }
         private Voice _voice;
         public RectangleState rectangleState { get; set; }
+        public Configure Config { get; set; }
         public ColckWindowView()
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace ColckWindow
             SetWindowPosition(50, WindowWidth - Width);
 
             rectangleState = RectangleState.Default;
+            Config = new Configure();
+            Config.Start();
         }
 
         /// <summary>

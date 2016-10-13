@@ -112,6 +112,10 @@
       <Project>{3980119e-12d0-4d75-81f4-868cac336402}</Project>
       <Name>NetworkLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XmlSerializer\XmlSerializer.csproj">
+      <Project>{6289a3a8-b70e-4c76-a9bf-6478e5521954}</Project>
+      <Name>XmlSerializer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imge\向上箭头.png" />
