@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ColckWindow
 {
@@ -20,12 +21,14 @@ namespace ColckWindow
         public Configure Config { get; set; }
         public ColckWindowView()
         {
+            Config = new Configure();
+            Config.Start();
+
             InitializeComponent();
             colck = new Colck();
 
             network = new Network();
-            Config = new Configure();
-            Config.Start();
+          
             Controller = new ControllerColck(this);
 
             WindowHeight = System.Windows.SystemParameters.FullPrimaryScreenHeight;
@@ -33,7 +36,8 @@ namespace ColckWindow
             SetWindowPosition(50, WindowWidth - Width);
 
             rectangleState = RectangleState.Default;
-
+            DragRect.DataContext = Config;
+            FunctionRcet.DataContext = Config;
         }
 
         /// <summary>

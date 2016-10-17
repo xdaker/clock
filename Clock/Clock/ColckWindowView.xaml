@@ -8,7 +8,7 @@
         Title="ColckWindowView" Height="183" Width="350" Background="{x:Null}" ShowInTaskbar="False" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid Margin="0,0,10,0">
         <Grid Margin="0,10,0,0" HorizontalAlignment="Left" Width="340.5" Height="41.334" VerticalAlignment="Top">
-            <Rectangle x:Name="DragRect" Fill="#CCE6E6E6" Margin="0,0,158.5,0" HorizontalAlignment="Right" Width="21" MouseDown="DragRcet_Dowm" MouseEnter="DragRect_Enter" MouseLeave="DragRect_MouseLeave" Cursor="SizeAll"/>
+            <Rectangle x:Name="DragRect" Fill="{Binding FrontViewColorBrush,Mode=OneWay}"  Margin="0,0,158.5,0" HorizontalAlignment="Right" Width="21" MouseDown="DragRcet_Dowm" MouseEnter="DragRect_Enter" MouseLeave="DragRect_MouseLeave" Cursor="SizeAll"/>
         </Grid>
         <Grid x:Name="ViewGrid" HorizontalAlignment="Right" Margin="0,6, 7.167, 5" Width="152">
             <TextBlock x:Name="TimeText" HorizontalAlignment="Left" Height="32" Margin="5.264,8.375,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" Width="56.363" Panel.ZIndex="1" FontFamily="/Clock;component/Font/#SAO UI" FontSize="26.667" d:LayoutOverrides="VerticalAlignment" RenderTransformOrigin="0.5,0.5"/>
@@ -16,8 +16,8 @@
                 <Rectangle.Fill>
                     <LinearGradientBrush EndPoint="1,0" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
                         <GradientStop Color="{DynamicResource {x:Static SystemColors.GradientActiveCaptionColor}}"/>
-                        <GradientStop Color="#CCE6E6E6" Offset="0"/>
-                        <GradientStop Color="#00E6E6E6" Offset="1" />
+                        <GradientStop Color="{Binding ViewColor,Mode = OneWay}" Offset="0"/>
+                        <GradientStop Color="{Binding BottomViewColor,Mode=OneWay}" Offset="1" />
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
