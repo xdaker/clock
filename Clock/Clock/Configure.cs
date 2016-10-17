@@ -8,15 +8,20 @@ using System.Xml.Serialization;
 
 namespace ColckWindow
 {
-   [XmlType("Configure")]
+    [Serializable]
+    [XmlType("Configure")]
    public class Configure
-    {
-        
+    {  
         /// <summary>
         /// 窗口颜色
         /// </summary>
         [XmlElement("ViewColor")]
         public Color ViewColor { get; set; }
+        /// <summary>
+        /// 字体颜色
+        /// </summary>
+        [XmlElement("FontColor")]
+        public Color FontColor { get; set; }
 
         /// <summary>
         /// 总在最前
@@ -50,6 +55,7 @@ namespace ColckWindow
         public void Default()
         {
             ViewColor = Color.FromArgb(200,230,230,230);
+            FontColor = Color.FromArgb(255,0,0,0);
             AllFirst = true;
             AlarmVolume = 100;
             RemindVolume = 100;
@@ -59,23 +65,33 @@ namespace ColckWindow
         private void Colne(Configure config)
         {
             ViewColor = config.ViewColor;
+            FontColor = config.FontColor;
             AllFirst = config.AllFirst;
             AlarmVolume = config.AlarmVolume;
             RemindVolume = config.RemindVolume;
             AlarmPath = config.AlarmPath;
             RemindPath = config.RemindPath;
         }
+
         public void Start()
         {
             if (File.Exists(@"Config.xml"))
             {
-                var config = XmlSerializer.XmlSerializer.LoadFromXml<Configure>(@"Config.xml");
-                Colne(config);
+                try
+                {
+                    var config = XmlSerializer.XmlSerializer.LoadFromXml<Configure>(@"Configure.xml");
+                    Colne(config);
+                }
+                catch
+                {
+                    Default();
+                    XmlSerializer.XmlSerializer.SaveToXml(@"Configure.xml", this, GetType(), "Configure");
+                }
             }
             else
             {
                 Default();
-                XmlSerializer.XmlSerializer.SaveToXml(@"Config.xml", this, GetType(), "Config");
+                XmlSerializer.XmlSerializer.SaveToXml(@"Configure.xml", this, GetType(), "Configure");
             }
         }
     }

@@ -17,6 +17,7 @@ namespace ColckWindow
         private Grid viewGrid => View.ViewGrid;
         private MyMenu menu { get; set; }
         private Voice _voice { get; set; }
+        public Configure Configure => View.Config;
         private delegate void CalculationPosition();
         private delegate void DragEndEvent();
         private ViewPosition _thisViewPosition { get; set; }
@@ -30,19 +31,23 @@ namespace ColckWindow
             colck.YearChange += YearChangeHandler;
             colck.DayChange += DayChangeHandler;
             colck.MonthChange += MonthChangeHandler;;
-
             colck.MillisecondChange += MillisecondChangeEventHandler;
 
             network.Update += NetworkChangeHandler;
+            
             menu = new MyMenu();
             viewGrid.ContextMenu = menu;
             AddMenuEvent();
             _thisViewPosition = ViewPosition.InitialValue;
         }
+
         private void MillisecondChangeEventHandler(object sender, TimeUpdateEventArgs e)
         {
             StateIntegrate(View.rectangleState);
-            View.SetTopmost(true);   
+            if (Configure.AllFirst)
+            {
+               View.SetTopmost(true);
+            }
         }
 
         private void DragEnd()

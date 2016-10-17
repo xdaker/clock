@@ -27,21 +27,21 @@ namespace XmlSerializer
             }
         }
 
-        public static T LoadFromXml<T>(string filePath) where T : class 
+        public static T LoadFromXml<T>(string filePath) where T : class
         {
             object result = null;
-
             if (File.Exists(filePath))
             {
                 using (StreamReader reader = new StreamReader(filePath))
                 {
                     System.Xml.Serialization.XmlSerializer xmlSerializer =
-                        new System.Xml.Serialization.XmlSerializer(typeof(T));
+                        new System.Xml.Serialization.XmlSerializer(typeof (T));
                     result = xmlSerializer.Deserialize(reader);
                 }
             }
 
             return result as T;
+
         }
     }
 }

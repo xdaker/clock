@@ -1,4 +1,5 @@
 ﻿using NetworkLibrary;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -23,7 +24,8 @@ namespace ColckWindow
             colck = new Colck();
 
             network = new Network();
-
+            Config = new Configure();
+            Config.Start();
             Controller = new ControllerColck(this);
 
             WindowHeight = System.Windows.SystemParameters.FullPrimaryScreenHeight;
@@ -31,8 +33,7 @@ namespace ColckWindow
             SetWindowPosition(50, WindowWidth - Width);
 
             rectangleState = RectangleState.Default;
-            Config = new Configure();
-            Config.Start();
+
         }
 
         /// <summary>
