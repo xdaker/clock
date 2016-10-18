@@ -6,6 +6,7 @@ using NetworkLibrary;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
+using Clock.DialogBox;
 
 namespace ColckWindow
 {
@@ -135,8 +136,16 @@ namespace ColckWindow
             menu.menuItem["退出"].Click += (ss, ee) => {
                 View.ViewClose();
             };
-
+            menu.menuItem["设置"].Click += SettingClick;
         }
+
+        private void SettingClick(object sender, RoutedEventArgs e)
+        {
+            DialongWindow win = new DialongWindow();
+            win.GridWindow.Children.Add(new Setting());
+            win.Show();
+        }
+
         private void StateIntegrate(RectangleState state)
         {
             switch (state)

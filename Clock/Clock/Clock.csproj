@@ -59,6 +59,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Configure.cs" />
+    <Compile Include="DialogBox\AlarmClockSetting.xaml.cs">
+      <DependentUpon>AlarmClockSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBox\DialongWindow.xaml.cs">
+      <DependentUpon>DialongWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBox\RemindString.xaml.cs">
+      <DependentUpon>RemindString.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBox\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBox\ShutdownSetting.xaml.cs">
+      <DependentUpon>ShutdownSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBox\WIFISetting.xaml.cs">
+      <DependentUpon>WIFISetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Voice.cs" />
     <Page Include="ColckWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -72,6 +90,30 @@
       <DependentUpon>ColckWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="DialogBox\AlarmClockSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogBox\DialongWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogBox\RemindString.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogBox\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogBox\ShutdownSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogBox\WIFISetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerColck.cs" />
