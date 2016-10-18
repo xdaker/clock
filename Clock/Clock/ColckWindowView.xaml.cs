@@ -16,7 +16,7 @@ namespace ColckWindow
         private ControllerColck Controller;
         public double WindowHeight { get; set; }
         public double WindowWidth { get; set; }
-        private Voice _voice;
+        private Voice _voice { get; set; }
         public RectangleState rectangleState { get; set; }
         public Configure Config { get; set; }
         public ColckWindowView()
@@ -37,7 +37,7 @@ namespace ColckWindow
 
             rectangleState = RectangleState.Default;
             DragRect.DataContext = Config;
-            FunctionRcet.DataContext = Config;
+            ViewGrid.DataContext = Config;
         }
 
         /// <summary>
@@ -114,8 +114,8 @@ namespace ColckWindow
             {
                 rectangleState = RectangleState.Focus;
             }
-            _voice = new Voice(VoiceType.Click);
-            _voice.Play();
+            _voice = new Voice(Config);
+            _voice.Play(VoiceType.Click);
         }
         public void ViewClose()
         {

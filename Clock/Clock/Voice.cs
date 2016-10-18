@@ -12,29 +12,18 @@ namespace ColckWindow
         private VoiceType _type;
         private MediaPlayer _player = new MediaPlayer();
         private string exePath;
-
+        private Configure _configure;
         public Uri filePath;
         public TimeSpan Position => _player.Position;
-        public Voice(VoiceType type)
+        public Voice(Configure configure)
+        {
+            exePath = System.Environment.CurrentDirectory;
+            _configure = configure;
+        }
+        public void Play(VoiceType type)
         {
             _type = type;
-            exePath = System.Environment.CurrentDirectory;
-            switch (_type)
-            {
-                case VoiceType.Click:
-                    filePath = new Uri(exePath + @"\package\Feedback.SAO.Click.wav", UriKind.RelativeOrAbsolute);
-                    break;
-                case VoiceType.Message:
-                    filePath = new Uri(exePath + @"\package\Notify.SAO.Message.wav", UriKind.RelativeOrAbsolute);
-                    break;
-                case VoiceType.Present:
-                    filePath = new Uri(exePath + @"\package\Notify.SAO.Present.wav", UriKind.RelativeOrAbsolute);
-                    break;
-            }
-            
-        }
-        public void Play()
-        {
+            SeletePath(type);
             _player.Open(filePath);
             _player.Play();
         }
@@ -53,6 +42,24 @@ namespace ColckWindow
         public void Volume(double volume)
         {
             _player.Volume = volume;
+        }
+
+        private void SeletePath(VoiceType type)
+        {
+            switch (_type)
+            {
+                case VoiceType.Click:
+                    filePath = new Uri(exePath + @"\package\Feedback.SAO.Click.wav", UriKind.RelativeOrAbsolute);
+                    break;
+                case VoiceType.Message:
+                    filePath = new Uri(_configure.RemindPath, UriKind.RelativeOrAbsolute);
+                    _player.Volume = _configure.RemindVolume; 
+                    break;
+                case VoiceType.Present:
+                    filePath = new Uri(_configure.AlarmPath, UriKind.RelativeOrAbsolute);
+                    _player.Volume = _configure.RemindVolume;
+                    break;
+            }
         }
     }
    public enum VoiceType
