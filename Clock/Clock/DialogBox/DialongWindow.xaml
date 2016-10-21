@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clock.DialogBox"
         mc:Ignorable="d"
-        Title="DialongWindow" Height="300" Width="300">
-    <Grid x:Name="GridWindow">
-        
+        Title="DialongWindow" Height="300" Width="300" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" >
+    <Grid x:Name="GridWindow" Background="{Binding FrontViewColorBrush ,Mode=OneWay}" MouseLeftButtonDown="GridWindow_MouseDown" MouseUp="GridWindow_OnMouseUp" >
+        <Image x:Name="ImageOk" HorizontalAlignment="Left" Margin="30,0,0,0" Width="45" Source="/Clock;component/Imge/ok_normal.png" Panel.ZIndex="10" Height="45" VerticalAlignment="Bottom"/>
+        <Image x:Name="ImageCancel" HorizontalAlignment="Right" Margin="0,0,30,0" Width="45" Source="/Clock;component/Imge/cancel_normal.png" Panel.ZIndex="10" Height="45" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

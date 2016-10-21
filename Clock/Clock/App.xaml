@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:NetworkLibrary"
              StartupUri="ColckWindowView.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="./DialogBox/DictionaryStyle.xaml"></ResourceDictionary>
     </Application.Resources>
 </Application>

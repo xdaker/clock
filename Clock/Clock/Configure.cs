@@ -12,7 +12,21 @@ namespace ColckWindow
     [Serializable]
     [XmlType("Configure")]
    public class Configure : INotifyPropertyChanged
-    {  
+    {
+        [XmlIgnore]
+        private byte _viewColorR;
+        [XmlIgnore]
+        public byte ViewColorR
+        {
+            get { return _viewColorR; }
+            set
+            {
+                _viewColorR = value;
+                ViewColor = Color.FromArgb(ViewColor.A , _viewColorR , ViewColor.G , ViewColor.B);
+                OnPropertyChanged("R");
+            }
+        }
+
         /// <summary>
         /// 窗口颜色
         /// </summary>
@@ -147,6 +161,7 @@ namespace ColckWindow
             RemindVolume = 100;
             AlarmPath = @"package/Notify.SAO.Present.wav";
             RemindPath = @"package/Notify.SAO.Message.wav";
+            _viewColorR = 230;
         }
         private void Colne(Configure config)
         {
@@ -157,6 +172,7 @@ namespace ColckWindow
             RemindVolume = config.RemindVolume;
             AlarmPath = config.AlarmPath;
             RemindPath = config.RemindPath;
+            _viewColorR = ViewColor.R;
         }
 
         public void Start()

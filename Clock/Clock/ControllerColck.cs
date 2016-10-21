@@ -142,8 +142,8 @@ namespace ColckWindow
         private void SettingClick(object sender, RoutedEventArgs e)
         {
             DialongWindow win = new DialongWindow();
-            win.GridWindow.Children.Add(new Setting());
-            win.Show();
+            win._Configure = Configure;
+            win.Show(WindowsType.Setting);
         }
 
         private void StateIntegrate(RectangleState state)
