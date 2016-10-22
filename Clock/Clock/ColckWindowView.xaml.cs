@@ -131,6 +131,10 @@ namespace ColckWindow
         {
             if (Dispatcher.CheckAccess())
             {
+                if (b == false && Topmost == false)
+                {
+                    return;
+                }
                 Topmost = b;
             }
             else

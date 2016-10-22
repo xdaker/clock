@@ -45,10 +45,7 @@ namespace ColckWindow
         private void MillisecondChangeEventHandler(object sender, TimeUpdateEventArgs e)
         {
             StateIntegrate(View.rectangleState);
-            if (Configure.AllFirst)
-            {
-               View.SetTopmost(true);
-            }
+            View.SetTopmost(Configure.AllFirst);
         }
 
         private void DragEnd()

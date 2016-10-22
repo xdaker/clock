@@ -143,7 +143,7 @@
             <TextBox x:Name="RemindPathText" Height="18.5" Margin="23,0,78.667,43" TextWrapping="Wrap" 
                      Text="{Binding RemindPath ,Mode=TwoWay}" VerticalAlignment="Bottom" 
                      Background="{x:Null}" BorderBrush="{x:Null}"  Foreground="{Binding FontColorBrush, Mode=OneWay}"/>
-            <TextBox x:Name="textBox_Copy" Height="18.5" Margin="23,0,78.667,5.5" TextWrapping="Wrap" 
+            <TextBox x:Name="AlarmPathText" Height="18.5" Margin="23,0,78.667,5.5" TextWrapping="Wrap" 
                 Text="{Binding AlarmPath, Mode=TwoWay}" VerticalAlignment="Bottom" 
                 Background="{x:Null}" BorderBrush="{x:Null}" d:LayoutOverrides="VerticalAlignment" 
                      Foreground="{Binding FontColorBrush, Mode=OneWay}"/>

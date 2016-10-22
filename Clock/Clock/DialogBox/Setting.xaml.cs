@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ColckWindow;
+using Microsoft.Win32;
 
 namespace Clock.DialogBox
 {
@@ -31,6 +32,39 @@ namespace Clock.DialogBox
                 _window = value;
                 Window.OkEvent += WindowOnOkEvent;
                 Window.CancelEvent += WindowOnCancelEvent;
+                RemindPathButton.Click += RemindPathButtonOnClick;
+                AlarmPathButton.Click += AlarmPathButtonOnClick;
+                AllFirstCheckBox.Click += AllFirstCheckBoxOnClick;
+            }
+        }
+
+        private void AllFirstCheckBoxOnClick(object sender, RoutedEventArgs routedEventArgs)
+        {
+            if (AllFirstCheckBox.IsChecked != null)
+            {
+                _configure.AllFirst = AllFirstCheckBox.IsChecked.Value;
+            }
+        }
+
+        private void AlarmPathButtonOnClick(object sender, RoutedEventArgs routedEventArgs)
+        {
+            Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+            ofd.DefaultExt = ".wav";
+            ofd.Filter = "WAV文件|*.wav|MP3文件|*.mp3";
+            if (ofd.ShowDialog() == true)
+            {
+                AlarmPathText.Text = ofd.FileName;
+            }
+        }
+
+        private void RemindPathButtonOnClick(object sender, RoutedEventArgs routedEventArgs)
+        {
+            Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+            ofd.DefaultExt = ".wav";
+            ofd.Filter = "WAV文件|*.wav|MP3文件|*.mp3";
+            if (ofd.ShowDialog() == true)
+            {
+                RemindPathText .Text= ofd.FileName; 
             }
         }
 
