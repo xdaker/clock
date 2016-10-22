@@ -172,6 +172,17 @@ namespace ColckWindow
                 OnPropertyChanged("AllFirst");
             }
         }
+
+        [XmlElement("SelfStarting")]
+        public bool SelfStarting
+        {
+            get { return _selfStarting; }
+            set
+            {
+                _selfStarting = value;
+                OnPropertyChanged("SelfStarting");
+            }
+        }
         /// <summary>
         /// 闹钟音量
         /// </summary>
@@ -245,6 +256,9 @@ namespace ColckWindow
         private string _alarmPath { get; set; }
         [XmlIgnore]
         private string _remindPath { get; set; }
+
+        private bool _selfStarting { get; set; }
+
         public Configure()
         {
         }
@@ -261,6 +275,7 @@ namespace ColckWindow
             ViewColor = Color.FromArgb(200,230,230,230);
             FontColor = Color.FromArgb(255,0,0,0);
             AllFirst = true;
+            SelfStarting = true;
             AlarmVolume = 100;
             RemindVolume = 100;
             AlarmPath = @"package/Notify.SAO.Present.wav";
@@ -279,6 +294,7 @@ namespace ColckWindow
             ViewColor = config.ViewColor;
             FontColor = config.FontColor;
             AllFirst = config.AllFirst;
+            SelfStarting = config.SelfStarting;
             AlarmVolume = config.AlarmVolume;
             RemindVolume = config.RemindVolume;
             AlarmPath = config.AlarmPath;

@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("Clock")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("XDaker@qq.com")]
 [assembly: AssemblyProduct("Clock")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

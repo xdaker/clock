@@ -156,7 +156,12 @@
             <CheckBox x:Name="AllFirstCheckBox" Content="总在最前" HorizontalAlignment="Left"
                       Margin="19.333,0,0,0" Width="75.333" 
                       Foreground="{Binding FontColorBrush, Mode=OneWay}"
-                      IsChecked="{Binding AllFirst,Mode=OneWay}"
+                      IsChecked="{Binding AllFirst,Mode=TwoWay}"
+                      />
+            <CheckBox x:Name="SelfStartingCheckBox" Content="开机启动" HorizontalAlignment="Left"
+                      Margin="200,0,0,0.333" Width="76" 
+                      Foreground="{Binding FontColorBrush, Mode=OneWay}"
+                      IsChecked="{Binding SelfStarting,Mode=TwoWay}"
                       />
         </Grid>
 

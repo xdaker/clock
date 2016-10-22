@@ -6,6 +6,7 @@ using NetworkLibrary;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
+using Clock;
 using Clock.DialogBox;
 
 namespace ColckWindow
@@ -40,6 +41,7 @@ namespace ColckWindow
             viewGrid.ContextMenu = menu;
             AddMenuEvent();
             _thisViewPosition = ViewPosition.InitialValue;
+            
         }
 
         private void MillisecondChangeEventHandler(object sender, TimeUpdateEventArgs e)
