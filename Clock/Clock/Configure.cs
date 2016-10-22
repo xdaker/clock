@@ -14,7 +14,25 @@ namespace ColckWindow
    public class Configure : INotifyPropertyChanged
     {
         [XmlIgnore]
+        private byte _miniTransparency =>25;
+        [XmlIgnore]
         private byte _viewColorR;
+        [XmlIgnore]
+        private byte _viewColorG;
+        [XmlIgnore]
+        private byte _viewColorB;
+        [XmlIgnore]
+        private byte _viewColorA;
+
+        [XmlIgnore]
+        private byte _fontColorR;
+        [XmlIgnore]
+        private byte _fontColorG;
+        [XmlIgnore]
+        private byte _fontColorB;
+        [XmlIgnore]
+        private byte _fontColorA;
+
         [XmlIgnore]
         public byte ViewColorR
         {
@@ -23,7 +41,93 @@ namespace ColckWindow
             {
                 _viewColorR = value;
                 ViewColor = Color.FromArgb(ViewColor.A , _viewColorR , ViewColor.G , ViewColor.B);
-                OnPropertyChanged("R");
+                OnPropertyChanged("ViewColorR");
+            }
+        }
+        [XmlIgnore]
+        public byte ViewColorG
+        {
+            get { return _viewColorG; }
+            set
+            {
+                _viewColorG = value;
+                ViewColor = Color.FromArgb(ViewColor.A, ViewColor.R, _viewColorG, ViewColor.B);
+                OnPropertyChanged("ViewColorG");
+            }
+        }
+        [XmlIgnore]
+        public byte ViewColorB
+        {
+            get { return _viewColorB; }
+            set
+            {
+                _viewColorB = value;
+                ViewColor = Color.FromArgb(ViewColor.A, ViewColor.R, ViewColor.G, _viewColorB);
+                OnPropertyChanged("ViewColorB");
+            }
+        }
+        [XmlIgnore]
+        public byte ViewColorA
+        {
+            get { return _viewColorA; }
+            set
+            {
+                _viewColorA = value;
+                if (value < 25)
+                {
+                    _viewColorA = _miniTransparency;
+                }
+                ViewColor = Color.FromArgb(_viewColorA, ViewColor.R, ViewColor.G, ViewColor.B);
+                OnPropertyChanged("ViewColorA");
+            }
+        }
+
+        [XmlIgnore]
+        public byte FontColorR
+        {
+            get { return _fontColorR; }
+            set
+            {
+                _fontColorR = value;
+                FontColor = Color.FromArgb(FontColor.A, _fontColorR, FontColor.G, FontColor.B);
+                OnPropertyChanged("FontColorR");
+            }
+        }
+        [XmlIgnore]
+        public byte FontColorG
+        {
+            get { return _fontColorG; }
+            set
+            {
+                _fontColorG = value;
+                FontColor = Color.FromArgb(FontColor.A, FontColor.R, _fontColorG, FontColor.B);
+                OnPropertyChanged("FontColorG");
+            }
+        }
+        [XmlIgnore]
+        public byte FontColorB
+        {
+            get { return _fontColorB; }
+            set
+            {
+                _fontColorB = value;
+                FontColor = Color.FromArgb(FontColor.A, FontColor.R, FontColor.G, _fontColorB);
+                OnPropertyChanged("FontColorB");
+            }
+        }
+        [XmlIgnore]
+        public byte FontColorA
+        {
+            get { return _fontColorA; }
+            set
+            {
+                _fontColorA = value;
+                if (value < 25)
+                {
+                    _fontColorA = _miniTransparency;
+                }
+                FontColor = Color.FromArgb(_fontColorA, FontColor.R, FontColor.G, FontColor.B);
+                OnPropertyChanged("FontColorA");
             }
         }
 
@@ -162,6 +266,13 @@ namespace ColckWindow
             AlarmPath = @"package/Notify.SAO.Present.wav";
             RemindPath = @"package/Notify.SAO.Message.wav";
             _viewColorR = 230;
+            _viewColorA = 200;
+            _viewColorB = 230;
+            _viewColorG = 230;
+            _fontColorA = 255;
+            _fontColorB = 0;
+            _fontColorG = 0;
+            _fontColorR = 0;
         }
         private void Colne(Configure config)
         {
@@ -172,12 +283,20 @@ namespace ColckWindow
             RemindVolume = config.RemindVolume;
             AlarmPath = config.AlarmPath;
             RemindPath = config.RemindPath;
-            _viewColorR = ViewColor.R;
+            ViewColorR = ViewColor.R;
+            ViewColorA = ViewColor.A;
+            ViewColorB = ViewColor.B;
+            ViewColorG = ViewColor.G;
+
+            FontColorA = FontColor.A;
+            FontColorB = FontColor.B;
+            FontColorG = FontColor.G;
+            FontColorR = FontColor.R;
         }
 
-        public void Start()
+        public void Read()
         {
-            if (File.Exists(@"Config.xml"))
+            if (File.Exists(@"Configure.xml"))
             {
                 try
                 {
@@ -195,6 +314,11 @@ namespace ColckWindow
                 Default();
                 XmlSerializer.XmlSerializer.SaveToXml(@"Configure.xml", this, GetType(), "Configure");
             }
+        }
+
+        public void Write()
+        {
+            XmlSerializer.XmlSerializer.SaveToXml(@"Configure.xml", this, GetType(), "Configure");
         }
     }
 }

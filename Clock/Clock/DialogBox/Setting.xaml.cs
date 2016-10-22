@@ -31,7 +31,6 @@ namespace Clock.DialogBox
                 _window = value;
                 Window.OkEvent += WindowOnOkEvent;
                 Window.CancelEvent += WindowOnCancelEvent;
-                slider.DataContext = _configure;
             }
         }
 
@@ -42,12 +41,12 @@ namespace Clock.DialogBox
 
         private void WindowOnCancelEvent(object sender, OkEventArgs okEventArgs)
         {
-            
+            _configure.Read();
         }
 
         private void WindowOnOkEvent(object sender, OkEventArgs okEventArgs)
         {
-            
+            _configure.Write();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ColckWindow
         public ColckWindowView()
         {
             Config = new Configure();
-            Config.Start();
+            Config.Read();
 
             InitializeComponent();
             colck = new Colck();

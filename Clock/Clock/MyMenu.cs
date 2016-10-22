@@ -64,7 +64,7 @@ namespace ColckWindow
             item.MouseEnter += (ee, ss) =>
             {
                 var config = new Configure();
-                config.Start();
+                config.Read();
                 _voice = new Voice(config);
                 _voice.Play(VoiceType.Click);
             };

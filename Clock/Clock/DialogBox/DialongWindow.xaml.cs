@@ -32,6 +32,11 @@ namespace Clock.DialogBox
 
             ImageCancel.MouseLeave += CancelOnMouseLeaveHandle;
             ImageCancel.MouseEnter += CancelOnMouseEnterHandle;
+
+            double WH = System.Windows.SystemParameters.FullPrimaryScreenHeight;
+            double WW = System.Windows.SystemParameters.FullPrimaryScreenWidth;
+            this.Top = (WH - this.Height) / 3;
+            this.Left = (WW - this.Width) / 2;
         }
 
         public void Show(WindowsType type)
@@ -43,19 +48,23 @@ namespace Clock.DialogBox
                     GridWindow.Children.Remove(chi as UserControl);
                 }
             }
+            UserControl userControl =null;
             switch (type)
             {
                 case WindowsType.Setting:
-                    var s = new Setting();
-                    s._configure = _Configure;
-                    s.Window = this;
-                    GridWindow.Children.Add(s);
-                    Height = s.Height + ImageOk.Height;
-                    GridWindow.Height = s.Height;
+                    userControl = new Setting();
+                    (userControl as Setting)._configure = _Configure;
+                    (userControl as Setting).Window = this;
                     break;
             }
-            GridWindow.DataContext = _Configure;
-            Show();
+            if (userControl != null)
+            {
+                GridWindow.Children.Add(userControl);
+                Height = userControl.Height + ImageOk.Height;
+                GridWindow.Height = userControl.Height + ImageOk.Height;
+                GridWindow.DataContext = _Configure;
+                Show();
+            }
         }
 
         private void GridWindow_MouseDown(object sender, MouseButtonEventArgs e)
