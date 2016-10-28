@@ -37,7 +37,7 @@ namespace ColckWindow
 
             network.Update += NetworkChangeHandler;
             
-            menu = new MyMenu();
+            menu = new MyMenu(Configure);
             viewGrid.ContextMenu = menu;
             AddMenuEvent();
             _thisViewPosition = ViewPosition.InitialValue;

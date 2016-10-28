@@ -70,6 +70,11 @@ namespace Clock.DialogBox
         {
             _configure.Write();
             SelfStarting.SetSelfStarting(_configure.SelfStarting, "Clock.exe");
+            MessageBox message = new MessageBox();
+            message.configure = _configure;
+            message.SetPrompt("设置");
+            message.SetMessage("已更改配置");
+            message.Show();
         }
     }
 }
