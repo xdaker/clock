@@ -38,7 +38,7 @@ namespace Clock.DialogBox
         {
             Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
             ofd.DefaultExt = ".wav";
-            ofd.Filter = "WAV文件|*.wav|MP3文件|*.mp3";
+            ofd.Filter = "WAV文件|*.wav";
             if (ofd.ShowDialog() == true)
             {
                 AlarmPathText.Text = ofd.FileName;
@@ -49,7 +49,7 @@ namespace Clock.DialogBox
         {
             Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
             ofd.DefaultExt = ".wav";
-            ofd.Filter = "WAV文件|*.wav|MP3文件|*.mp3";
+            ofd.Filter = "WAV文件|*.wav";
             if (ofd.ShowDialog() == true)
             {
                 RemindPathText .Text= ofd.FileName; 
@@ -70,6 +70,11 @@ namespace Clock.DialogBox
         {
             _configure.Write();
             SelfStarting.SetSelfStarting(_configure.SelfStarting, "Clock.exe");
+            MessageBox message = new MessageBox();
+            message.configure = _configure;
+            message.SetPrompt("设置");
+            message.SetMessage("已更改配置");
+            message.Show();
         }
     }
 }

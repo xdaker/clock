@@ -32,7 +32,7 @@ namespace Clock.Misc
             System.Threading.Thread.Sleep(500);
             p.StandardInput.WriteLine("exit");
             p.Close();
-            return p.StandardOutput.ReadToEnd();;
+            return p.StandardOutput.ReadToEnd();
         }
     }
 }
