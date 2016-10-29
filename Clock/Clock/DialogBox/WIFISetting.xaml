@@ -4,23 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Clock.DialogBox"
-             mc:Ignorable="d" Height="107.818" Width="358.545">
+             mc:Ignorable="d" Height="108" Width="359">
     <Grid x:Name="ViewGrid">
         <TextBlock x:Name="textBlock" Height="30.182" Margin="165.485,0,150.576,0" 
                    TextWrapping="Wrap" Text="WIFI" VerticalAlignment="Top" FontSize="26.667" 
-                   FontFamily="/Clock;component/Font/#SAO UI"/>
+                   FontFamily="/Clock;component/Font/#SAO UI" Foreground="{Binding FontColorBrush,Mode=OneWay}"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="21" 
-                   Margin="57,34,0,0" TextWrapping="Wrap" Text="名字" 
-                   VerticalAlignment="Top" Width="36" FontSize="16"/>
+                   Margin="57,34,0,0" TextWrapping="Wrap" Text="名称" 
+                   VerticalAlignment="Top" Width="36" FontSize="16" Foreground="{Binding FontColorBrush,Mode=OneWay}"/>
         <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="57,75,0,0" 
                    TextWrapping="Wrap" Text="密码" Width="36" FontSize="16" Height="20" 
-                   VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox" Height="21" Margin="98,34,59.545,0" TextWrapping="Wrap" 
-                 Text="TextBox" VerticalAlignment="Top" FontSize="16"
-                 FontFamily="/Clock;component/Font/#SAO UI"/>
-        <TextBox x:Name="textBox_Copy" Height="21" Margin="98,74,59.545,0" TextWrapping="Wrap"
-                 Text="TextBox" VerticalAlignment="Top" FontSize="16" 
-                 FontFamily="/Clock;component/Font/#SAO UI"/>
+                   VerticalAlignment="Top" Foreground="{Binding FontColorBrush,Mode=OneWay}"/>
+        <TextBox x:Name="User" Height="21" Margin="98,34,59.545,0" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" FontSize="16"
+                 BorderBrush="{x:Null}" Foreground="{Binding FontColorBrush,Mode=OneWay}"/>
+        <TextBox x:Name="Password" Height="21" Margin="98,74,59.545,0" TextWrapping="Wrap"
+                 Text="" VerticalAlignment="Top" FontSize="16" 
+                 BorderBrush="{x:Null}" Foreground="{Binding FontColorBrush,Mode=OneWay}"
+                 /> 
 
     </Grid>
 </UserControl>
