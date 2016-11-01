@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using ColckWindow;
 
@@ -65,15 +66,15 @@ namespace Clock.DialogBox
         {
             _configure.Read();
         }
-
+        MessageBox message = new MessageBox();
         private void WindowOnOkEvent(object sender, OkEventArgs okEventArgs)
         {
             _configure.Write();
             SelfStarting.SetSelfStarting(_configure.SelfStarting, "Clock.exe");
-            MessageBox message = new MessageBox();
             message.configure = _configure;
             message.SetPrompt("设置");
             message.SetMessage("已更改配置");
+            message.SetCloseTime(2);
             message.Show();
         }
     }

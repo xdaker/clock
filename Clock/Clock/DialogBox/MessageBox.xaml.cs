@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 using ColckWindow;
 
 namespace Clock.DialogBox
@@ -29,11 +22,14 @@ namespace Clock.DialogBox
             }
         }
         private imageSate Sate = imageSate.Leave;
+        //构造一个DispatcherTimer类实例
+        DispatcherTimer dTimer = new System.Windows.Threading.DispatcherTimer();
         public MessageBox()
         {
             InitializeComponent();
             image.MouseEnter += ImageOnMouseEnter;
             image.MouseLeave += ImageOnMouseLeave;
+
             ViewGrid.MouseLeftButtonDown += ViewGridOnMouseLeftButtonDown;
             double WH = System.Windows.SystemParameters.FullPrimaryScreenHeight;
             double WW = System.Windows.SystemParameters.FullPrimaryScreenWidth;
@@ -45,10 +41,12 @@ namespace Clock.DialogBox
         {
             if (Sate == imageSate.Leave)
             {
+                dTimer.Interval = new TimeSpan(0, 0, 60);
                 this.DragMove();
             }
             else
             {
+                dTimer.Stop();
                 Close();
             }
             
@@ -76,6 +74,19 @@ namespace Clock.DialogBox
         public void SetMessage(string message)
         {
             Message.Text = message;
+        }
+        
+        public void SetCloseTime(int time)
+        {
+            //设置事件处理函数
+            dTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dTimer.Interval = new TimeSpan(0, 0, time);
+            dTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         enum imageSate

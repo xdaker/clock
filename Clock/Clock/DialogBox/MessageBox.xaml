@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clock.DialogBox"
         mc:Ignorable="d"
-        Title="MessageBox" Height="81.512" Width="419.366" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" Topmost="True">
+        Title="MessageBox" Height="81.512" Width="419.366" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" Topmost="True" ResizeMode="NoResize" ShowInTaskbar="False" >
     <Grid x:Name="ViewGrid" Background="{Binding FrontViewColorBrush ,Mode=OneWay}">
         <Grid Height="24.667" Margin="0,0,96.699,0" VerticalAlignment="Top">
             <TextBlock x:Name="Prompt" Margin="10,1.333,-8,0" TextWrapping="Wrap" Foreground="{Binding FontColorBrush,Mode=OneWay}" FontSize="18.667" FontWeight="Bold" Text="Test"/>
@@ -18,7 +18,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="Message" Margin="10,4.666,-7.333,0" TextWrapping="Wrap" Foreground="{Binding FontColorBrush,Mode=OneWay}" Grid.ColumnSpan="3" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" FontSize="16" FontStyle="Italic"/>
         </Grid>
-        <Image x:Name="image" HorizontalAlignment="Right" Height="13" VerticalAlignment="Top" Width="14" Source="/Clock;component/Imge/Close_normal.png" Margin="0,0,4,0"/>
+        <Image x:Name="image" HorizontalAlignment="Right" Height="13" VerticalAlignment="Top" Width="14" Source="/Clock;component/Imge/Close_normal.png"/>
 
     </Grid>
 </Window>
