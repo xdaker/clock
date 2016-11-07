@@ -49,13 +49,22 @@ namespace Clock.DialogBox
                     (userControl as Setting)._configure = _Configure;
                     (userControl as Setting).Window = this;
                     break;
+                case WindowsType.Wifi:
+                    userControl = new WIFISetting();
+                    (userControl as WIFISetting)._configure = _Configure;
+                    (userControl as WIFISetting).Window = this;
+                    break;
             }
             if (userControl != null)
             {
-                GridWindow.Children.Add(userControl);
                 Height = userControl.Height + ImageOk.Height;
-                GridWindow.Height = userControl.Height + ImageOk.Height;
+                ViewGrid.Height = userControl.Height;
+                ViewGrid.Width = userControl.Width;
+                Width = userControl.Width;
                 GridWindow.DataContext = _Configure;
+                userControl.HorizontalAlignment = HorizontalAlignment.Left;
+                userControl.VerticalAlignment = VerticalAlignment.Top;
+                ViewGrid.Children.Add(userControl);
                 Show();
             }
         }
@@ -90,6 +99,8 @@ namespace Clock.DialogBox
             ImageCancel.Source = new BitmapImage(new Uri(@"/Clock;component/Imge/cancel_hover.png",
                 UriKind.RelativeOrAbsolute));
             cancelImageState = ImageState.Focus;
+            Voice voice = new Voice(_Configure);
+            voice.Play(VoiceType.Click);
         }
 
         private void CancelOnMouseLeaveHandle(object sender, MouseEventArgs e)
@@ -104,6 +115,8 @@ namespace Clock.DialogBox
             ImageOk.Source = new BitmapImage(new Uri(@"/Clock;component/Imge/ok_hover.png",
                 UriKind.RelativeOrAbsolute));
             okImageState = ImageState.Focus;
+            Voice voice = new Voice(_Configure);
+            voice.Play(VoiceType.Click);
         }
 
         private void OkOnMouseLeaveHandle(object sender, MouseEventArgs e)

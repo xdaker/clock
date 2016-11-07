@@ -136,6 +136,14 @@ namespace ColckWindow
                 View.ViewClose();
             };
             menu.menuItem["设置"].Click += SettingClick;
+            menu.menuItem["WIFI"].Click += WIFIClick;
+        }
+
+        private void WIFIClick(object sender, RoutedEventArgs routedEventArgs)
+        {
+            DialongWindow win = new DialongWindow();
+            win._Configure = Configure;
+            win.Show(WindowsType.Wifi);
         }
 
         private void SettingClick(object sender, RoutedEventArgs e)
