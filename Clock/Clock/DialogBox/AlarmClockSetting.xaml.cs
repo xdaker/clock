@@ -17,12 +17,26 @@ namespace Clock.DialogBox
     /// <summary>
     /// AlarmClockSetting.xaml 的交互逻辑
     /// </summary>
-    public partial class AlarmClockSetting : UserControl
+    public partial class AlarmClockSetting : UserControl, IButtonEvent
     {
         public AlarmClockSetting()
         {
             InitializeComponent(); 
         }
 
+        public DialongWindow Window
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public event EventHandler<OkEventArgs> CloseEvent;
     }
 }

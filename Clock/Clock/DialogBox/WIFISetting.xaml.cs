@@ -20,10 +20,13 @@ namespace Clock.DialogBox
     /// <summary>
     /// WIFISetting.xaml 的交互逻辑
     /// </summary>
-    public partial class WIFISetting : UserControl
+    public partial class WIFISetting : UserControl, IButtonEvent
     {
         public Configure _configure { get; set; }
         private DialongWindow _window;
+
+        public event EventHandler<OkEventArgs> CloseEvent;
+
         public DialongWindow Window
         {
             get { return _window; }
@@ -47,6 +50,7 @@ namespace Clock.DialogBox
                 message.SetMessage("热点已关闭");
                 message.configure = _configure;
                 message.Show();
+                CloseEvent?.Invoke(this, new OkEventArgs());
             }
         }
 
@@ -75,6 +79,7 @@ namespace Clock.DialogBox
                 Openwifi(strings);
                 message.SetMessage("已创建热点");
                 message.Show();
+                CloseEvent?.Invoke(this,new OkEventArgs());
             }
         }
 

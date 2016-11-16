@@ -92,6 +92,7 @@
     <Compile Include="DialogBox\DialongWindow.xaml.cs">
       <DependentUpon>DialongWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DialogBox\IButtonEvent.cs" />
     <Compile Include="DialogBox\MessageBox.xaml.cs">
       <DependentUpon>MessageBox.xaml</DependentUpon>
     </Compile>

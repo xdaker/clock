@@ -17,7 +17,7 @@ namespace Clock.DialogBox
     /// <summary>
     /// ShutdownSetting.xaml 的交互逻辑
     /// </summary>
-    public partial class ShutdownSetting : UserControl
+    public partial class ShutdownSetting : UserControl, IButtonEvent
     {
 
         public ShutdownSetting()
@@ -25,5 +25,20 @@ namespace Clock.DialogBox
             InitializeComponent();
 
         }
+
+        public DialongWindow Window
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public event EventHandler<OkEventArgs> CloseEvent;
     }
 }

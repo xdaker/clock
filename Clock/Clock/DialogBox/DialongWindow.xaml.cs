@@ -41,30 +41,36 @@ namespace Clock.DialogBox
                     GridWindow.Children.Remove(chi as UserControl);
                 }
             }
-            UserControl userControl =null;
+            object userobject =null;
             switch (type)
             {
                 case WindowsType.Setting:
-                    userControl = new Setting();
-                    (userControl as Setting)._configure = _Configure;
-                    (userControl as Setting).Window = this;
+                    userobject = new Setting();
+                    (userobject as Setting)._configure = _Configure;
+                    (userobject as Setting).Window = this;
                     break;
                 case WindowsType.Wifi:
-                    userControl = new WIFISetting();
-                    (userControl as WIFISetting)._configure = _Configure;
-                    (userControl as WIFISetting).Window = this;
+                    userobject = new WIFISetting();
+                    (userobject as WIFISetting)._configure = _Configure;
+                    (userobject as WIFISetting).Window = this;
                     break;
             }
-            if (userControl != null)
+            if (userobject != null)
             {
-                Height = userControl.Height + ImageOk.Height;
-                ViewGrid.Height = userControl.Height;
-                ViewGrid.Width = userControl.Width;
-                Width = userControl.Width;
+                UserControl user = userobject as UserControl;
+                Height = user.Height + ImageOk.Height;
+                ViewGrid.Height = user.Height;
+                ViewGrid.Width = user.Width;
+                Width = user.Width;
                 GridWindow.DataContext = _Configure;
-                userControl.HorizontalAlignment = HorizontalAlignment.Left;
-                userControl.VerticalAlignment = VerticalAlignment.Top;
-                ViewGrid.Children.Add(userControl);
+                user.HorizontalAlignment = HorizontalAlignment.Left;
+                user.VerticalAlignment = VerticalAlignment.Top;
+                ViewGrid.Children.Add(user);
+
+                (userobject as IButtonEvent).CloseEvent += (ss, ee) =>
+                {
+                    Close();
+                };
                 Show();
             }
         }
@@ -137,12 +143,10 @@ namespace Clock.DialogBox
             if (okImageState == ImageState.Focus)
             {
                 OkEvent?.Invoke(sender, new OkEventArgs());
-                Close();
             }
             else if (cancelImageState == ImageState.Focus)
             {
                 CancelEvent?.Invoke(sender, new OkEventArgs());
-                Close();
             }
 
         }

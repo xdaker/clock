@@ -8,11 +8,11 @@ namespace Clock.DialogBox
     /// <summary>
     /// Setting.xaml 的交互逻辑
     /// </summary>
-    public partial class Setting : UserControl
+    public partial class Setting : UserControl , IButtonEvent
     {
         public Configure _configure { get; set; }
         private DialongWindow _window;
-
+        public event EventHandler<OkEventArgs> CloseEvent;
         public DialongWindow Window
         {
             get { return _window; }
@@ -62,9 +62,11 @@ namespace Clock.DialogBox
             InitializeComponent();
         }
 
+
         private void WindowOnCancelEvent(object sender, OkEventArgs okEventArgs)
         {
             _configure.Read();
+            CloseEvent?.Invoke(this,new OkEventArgs());
         }
         MessageBox message = new MessageBox();
         private void WindowOnOkEvent(object sender, OkEventArgs okEventArgs)
@@ -76,6 +78,7 @@ namespace Clock.DialogBox
             message.SetMessage("已更改配置");
             message.SetCloseTime(2);
             message.Show();
+            CloseEvent?.Invoke(this, new OkEventArgs());
         }
     }
 }
