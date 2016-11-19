@@ -88,7 +88,13 @@ namespace Clock.DialogBox
         {
             this.Close();
         }
-
+        public void ShowTime(string prompt, string message, int time)
+        {
+            SetPrompt(prompt);
+            SetMessage(message);
+            SetCloseTime(time);
+            Show();
+        }
         enum imageSate
         {
             Enter,

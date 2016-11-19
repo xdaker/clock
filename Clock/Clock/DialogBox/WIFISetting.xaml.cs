@@ -46,12 +46,10 @@ namespace Clock.DialogBox
                 CreateCmd.create(str);
                 UserSettings.Wifi = false;
                 MessageBox message = new MessageBox();
-                message.SetPrompt("WIFI");
-                message.SetMessage("热点已关闭");
                 message.configure = _configure;
-                message.Show();
-                CloseEvent?.Invoke(this, new OkEventArgs());
+                message.ShowTime("WIFI", "wifi热点已关闭！", 2);
             }
+            CloseEvent?.Invoke(this, new OkEventArgs());
         }
 
         private void WindowOnOkEvent(object sender, OkEventArgs e)
@@ -60,7 +58,14 @@ namespace Clock.DialogBox
             {
                 MessageBox message = new MessageBox();
                 message.SetPrompt("WIFI");
-                message.configure = _configure;  
+                message.SetCloseTime(2);
+                message.configure = _configure;
+                if (NetworkInterfaces.Test())
+                {
+                    message.SetMessage("首先你要有无线网卡");
+                    message.Show();
+                    return;
+                }
                 if (User.Text.Length<1)
                 {
                     message.SetMessage("名称不能为空");
@@ -79,8 +84,8 @@ namespace Clock.DialogBox
                 Openwifi(strings);
                 message.SetMessage("已创建热点");
                 message.Show();
-                CloseEvent?.Invoke(this,new OkEventArgs());
             }
+            CloseEvent?.Invoke(this,new OkEventArgs());
         }
 
         private void Openwifi(string [] stringArray)
